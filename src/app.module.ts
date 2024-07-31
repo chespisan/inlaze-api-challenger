@@ -1,8 +1,11 @@
 import { Module } from '@nestjs/common';
-
-import { MoviesModule } from './movies/movies.module';
 import { ConfigModule } from '@nestjs/config';
-import configuration from './config/configuration';
+
+import { MoviesModule } from 'src/movies/movies.module';
+import { DatabseModule } from 'src/config/mongo/database.module';
+import { UserModule } from 'src/user/user.module';
+
+import configuration from 'src/config/configuration';
 
 @Module({
   imports: [
@@ -10,7 +13,9 @@ import configuration from './config/configuration';
       isGlobal: true,
       load: [configuration],
     }),
+    DatabseModule,
     MoviesModule,
+    UserModule,
   ],
   controllers: [],
   providers: [],
