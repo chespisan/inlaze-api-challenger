@@ -4,6 +4,7 @@ import { HttpModule } from '@nestjs/axios';
 
 import { MoviesController } from 'src/movies/movies.controller';
 import { MoviesService } from 'src/movies/movies.service';
+
 import configuration from 'src/config/configuration';
 
 @Module({
