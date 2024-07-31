@@ -14,5 +14,8 @@ export default registerAs('config', () => {
       port: process.env.DB_PORT,
       connect: process.env.DB_CONNECT,
     },
+    auth: {
+      secret: process.env.TOKEN_SECRET,
+    },
   };
 });
