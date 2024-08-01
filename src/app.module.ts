@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
-import { MoviesModule } from 'src/movies/movies.module';
+import { UserModule } from 'src/user/infrastructure/user.module';
+import { AuthModule } from 'src/auth/infrastructure/auth.module';
 import { DatabseModule } from 'src/config/mongo/database.module';
-import { UserModule } from 'src/user/user.module';
 
 import configuration from 'src/config/configuration';
+import { MoviesModule } from './movies/infrastructure/movies.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import configuration from 'src/config/configuration';
     DatabseModule,
     MoviesModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

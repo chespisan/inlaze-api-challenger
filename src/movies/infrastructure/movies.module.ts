@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
 
-import { MoviesController } from 'src/movies/movies.controller';
-import { MoviesService } from 'src/movies/movies.service';
-
 import configuration from 'src/config/configuration';
+import { MoviesController } from './controllers/movies.controller';
+import { MoviesService } from './services/movies.service';
+import { MoviesUseCase } from '../application/use-cases/movie.usecase';
 
 @Module({
   imports: [
@@ -24,6 +24,6 @@ import configuration from 'src/config/configuration';
     }),
   ],
   controllers: [MoviesController],
-  providers: [MoviesService],
+  providers: [MoviesService, MoviesUseCase],
 })
 export class MoviesModule {}
