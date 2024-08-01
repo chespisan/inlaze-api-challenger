@@ -1,0 +1,10 @@
+services:
+  mongo:
+    image: mongo:4.4
+    environment:
+      MONGO_INITDB_ROOT: root
+      MONGO_INITDB_PASSWORD: root
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo_data:/data/db

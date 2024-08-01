@@ -1,11 +1,25 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { MoviesModule } from './movies/movies.module';
+import { ConfigModule } from '@nestjs/config';
+
+import { UserModule } from 'src/user/infrastructure/user.module';
+import { AuthModule } from 'src/auth/infrastructure/auth.module';
+import { DatabseModule } from 'src/config/mongo/database.module';
+
+import configuration from 'src/config/configuration';
+import { MoviesModule } from './movies/infrastructure/movies.module';
 
 @Module({
-  imports: [MoviesModule, MoviesModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [configuration],
+    }),
+    DatabseModule,
+    MoviesModule,
+    UserModule,
+    AuthModule,
+  ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
